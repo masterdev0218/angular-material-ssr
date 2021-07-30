@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://angular-material-ssr.web.app/sitemap.xml
