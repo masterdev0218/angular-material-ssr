@@ -8,9 +8,9 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "dev:ssr": "ng run angular-material-ssr:serve-ssr",
-    "serve:ssr": "node dist/angular-material-ssr/server/main.js",
     "build:ssr": "ng build && ng run angular-material-ssr:server",
-    "prerender": "ng run angular-material-ssr:prerender"
+    "prerender": "ng run angular-material-ssr:prerender",
+    "deploy": "firebase deploy --only functions,hosting"
   },
   "private": true,
   "dependencies": {
