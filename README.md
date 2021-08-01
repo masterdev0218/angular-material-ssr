@@ -28,15 +28,19 @@
 * Firebase functions used to serve Node.js SSR app
 * Dist folder contains functions folder with browser and server SSR code.
 * Functions folder contains a copy of dependencies from the src package.json file
+* App contains Angular Material card to see effect on rendering speed.
 
 ## :camera: Screenshots
 
-* ![Frontend screenshot](./img/home.png)
+![Frontend screenshot](./img/home.png)
 
 ## :signal_strength: Technologies
 
 * [Angular v12](https://angular.io/)
 * [Angular Universal v12](https://angular.io/guide/universal) added for Server Side Rendering (SSR)
+* [Angular Material v12](https://material.angular.io/) Material Design components
+* [Firebase Functions](https://firebase.google.com/docs/functions) serverless framework to automatically run SSR node.js server app
+* [Firebase Emulator](https://firebase.google.com/docs/emulator-suite) tools to test Cloud Functions
 * [RxJS v6](http://reactivex.io/)
 * [Express v4](https://www.npmjs.com/package/express) Node.js framework
 
@@ -49,16 +53,53 @@
 
 * Run `npm run dev:ssr` to see SSR app on a dev server
 * Run `npm run build:ssr` to build SSR project. The browser & server build folders will be stored in the `dist/functions` directory.
-* cd `dist/function` then run `firebase emulators:start` for Firebase emulator
+* `cd dist/functions` then run `firebase emulators:start` for Firebase emulator
 * Add `defer` to `dist/functions/browser/index.html` to make loading of styles asynchronous, e.g. `<link rel="stylesheet" href="styles.d6d9df648b6debafe22a.css" defer>`
 * From command prompt cd `/dist/functions' then run `npm run deploy` to deploy app to firebase functions & hosting
 
 ## :computer: Code Examples
 
-* tba
+* `server.ts` Express app exported so that it can be used by serverless Functions.
 
 ```typescript
-tba
+//
+export function app(): express.Express {
+  const server = express();
+  const websiteFileLocation = environment.production
+    ? 'browser'
+    : 'dist/functions/browser';
+  const distFolder = join(process.cwd(), websiteFileLocation);
+  const indexHtml = existsSync(join(distFolder, 'index.original.html'))
+    ? 'index.original.html'
+    : 'index';
+
+  // Our Universal express-engine (found @ https://github.com/angular/universal/tree/master/modules/express-engine)
+  server.engine(
+    'html',
+    ngExpressEngine({
+      bootstrap: AppServerModule,
+    })
+  );
+
+  server.set('view engine', 'html');
+  server.set('views', distFolder);
+
+  server.get(
+    '*.*',
+    express.static(distFolder, {
+      maxAge: '1y',
+    })
+  );
+
+  server.get('*', (req, res) => {
+    res.render(indexHtml, {
+      req,
+      providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }],
+    });
+  });
+
+  return server;
+}
 ```
 
 ## :cool: Features
@@ -67,8 +108,8 @@ tba
 
 ## :clipboard: Status & To-Do List
 
-* Status: Working. Perfect Lighthouse score
-* To-Do: Try material on Lighthouse score. Add PWA. Use to create an actual app with content. Update sitemap & robots.txt
+* Status: Working. Excellent Lighthouse score. Deployed to Firebase Functions
+* To-Do: Add PWA. Use to create an actual app with content. Update sitemap & robots.txt
 
 ## :clap: Inspiration
 
