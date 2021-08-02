@@ -1,6 +1,8 @@
 # Angular Material SSR
 
-* Angular app to deploy to Firebase functions with Server Side Rendering
+* Angular app deployed to Firebase functions with Server Side Rendering.
+* Progressive Web App
+* Optimised for an excellent Lighthouse score
 * **Note:** to open web links in a new window use: _ctrl+click on link_
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/AndrewJBateman/angular-material-ssr?style=plastic)
@@ -29,6 +31,7 @@
 * Dist folder contains functions folder with browser and server SSR code.
 * Functions folder contains a copy of dependencies from the src package.json file
 * App contains Angular Material card to see effect on rendering speed.
+* [Roboto font style: Regular 400](https://fonts.google.com/specimen/Roboto) used
 
 ## :camera: Screenshots
 
@@ -41,11 +44,12 @@
 * [Angular Material v12](https://material.angular.io/) Material Design components
 * [Firebase Functions](https://firebase.google.com/docs/functions) serverless framework to automatically run SSR node.js server app
 * [Firebase Emulator](https://firebase.google.com/docs/emulator-suite) tools to test Cloud Functions
-* [RxJS v6](http://reactivex.io/)
+* [RxJS v6](http://reactivex.io/) - not used as yet
 * [Express v4](https://www.npmjs.com/package/express) Node.js framework
 
 ## :floppy_disk: Setup
 
+* Create project in Firebase console then add functions. Thsi can all be done from firebase init in VS COde
 * `npm i` to install dependencies
 * `npm prune` to remove unused npm modules
 * `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
@@ -54,8 +58,7 @@
 * Run `npm run dev:ssr` to see SSR app on a dev server
 * Run `npm run build:ssr` to build SSR project. The browser & server build folders will be stored in the `dist/functions` directory.
 * `cd dist/functions` then run `firebase emulators:start` for Firebase emulator
-* Add `defer` to `dist/functions/browser/index.html` to make loading of styles asynchronous, e.g. `<link rel="stylesheet" href="styles.d6d9df648b6debafe22a.css" defer>`
-* From command prompt cd `/dist/functions' then run `npm run deploy` to deploy app to firebase functions & hosting
+* From `/dist/functions' run `npm run deploy` to deploy app to firebase functions & hosting
 
 ## :computer: Code Examples
 
@@ -108,16 +111,18 @@ export function app(): express.Express {
 
 ## :clipboard: Status & To-Do List
 
-* Status: Working. Excellent Lighthouse score. Deployed to Firebase Functions
-* To-Do: Add PWA. Use to create an actual app with content. Update sitemap & robots.txt
+* Status: Working SSR & PWA. Excellent Lighthouse score. Deployed to Firebase Functions
+* To-Do: Use to create an actual app with content. Update sitemap & robots.txt
 
 ## :clap: Inspiration
 
 * [Codeible: Server Side Rendering with Angular, Angular Universal, & Firebase 2021](https://www.youtube.com/watch?v=k7pLxaKkHYs)
+* [Dev.to: Loading Google Fonts and any other web fonts as fast as possible in early 2021](https://dev.to/masakudamatsu/loading-google-fonts-and-any-other-web-fonts-as-fast-as-possible-in-early-2021-4f5o)
+* [MDN: Link types: preload](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types/preload#Cross-origin_fetches)
 
 ## :file_folder: License
 
-* N/A
+* This project is licensed under the terms of the MIT license.
 
 ## :envelope: Contact
 
