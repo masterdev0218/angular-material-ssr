@@ -39,17 +39,17 @@
 
 ## :signal_strength: Technologies
 
-* [Angular v12](https://angular.io/)
-* [Angular Universal v12](https://angular.io/guide/universal) added for Server Side Rendering (SSR)
-* [Angular Material v12](https://material.angular.io/) Material Design components
+* [Angular v13](https://angular.io/)
+* [Angular Universal v13](https://angular.io/guide/universal) added for Server Side Rendering (SSR)
+* [Angular Material v13](https://material.angular.io/) Material Design components
 * [Firebase Functions](https://firebase.google.com/docs/functions) serverless framework to automatically run SSR node.js server app
 * [Firebase Emulator](https://firebase.google.com/docs/emulator-suite) tools to test Cloud Functions
-* [RxJS v6](http://reactivex.io/) - not used as yet
+* [RxJS v7](http://reactivex.io/) - not used as yet
 * [Express v4](https://www.npmjs.com/package/express) Node.js framework
 
 ## :floppy_disk: Setup
 
-* Create project in Firebase console then add functions. Thsi can all be done from firebase init in VS COde
+* Create project in Firebase console then add functions. This can all be done from firebase init in VS COde
 * `npm i` to install dependencies
 * `npm prune` to remove unused npm modules
 * `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
