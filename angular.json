@@ -169,6 +169,5 @@
         }
       }
     }
-  },
-  "defaultProject": "angular-material-ssr"
+  }
 }
