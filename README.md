@@ -39,9 +39,9 @@
 
 ## :signal_strength: Technologies
 
-* [Angular v14](https://angular.io/)
-* [Angular Universal v14](https://angular.io/guide/universal) added for Server Side Rendering (SSR)
-* [Angular Material v14](https://material.angular.io/) Material Design components
+* [Angular v15](https://angular.io/)
+* [Angular Universal v15](https://angular.io/guide/universal) added for Server Side Rendering (SSR)
+* [Angular Material v15](https://material.angular.io/) Material Design components
 * [Firebase Functions](https://firebase.google.com/docs/functions) serverless framework to automatically run SSR node.js server app
 * [Firebase Emulator](https://firebase.google.com/docs/emulator-suite) tools to test Cloud Functions
 * [RxJS v7](http://reactivex.io/) - not used as yet
